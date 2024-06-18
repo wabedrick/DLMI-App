@@ -116,7 +116,9 @@ const MainScreen = ({ route }) => {
             </View>
           </Pressable>
 
-          <TouchableOpacity onPress={() => alert("These are our MCs")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("missionalCommunity")}
+          >
             <View
               style={{
                 marginBottom: 8,

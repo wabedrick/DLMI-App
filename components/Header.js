@@ -28,7 +28,7 @@ const Header = ({ headerText, headerIcon }) => {
       <Text
         style={{
           flex: 1,
-          fontSize: 22,
+          fontSize: 18,
           fontWeight: "700",
           letterSpacing: 0.5,
           fontFamily: "serif",

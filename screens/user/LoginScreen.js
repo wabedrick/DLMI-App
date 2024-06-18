@@ -91,11 +91,12 @@ const LoginScreen = () => {
 
           <TextInput
             placeholder="Enter username"
+            placeholderTextColor="grey"
             value={uname}
             onChangeText={setUname}
             style={{
               backgroundColor: "lightgray",
-              color: "gray",
+
               paddingHorizontal: 16,
               paddingVertical: 16,
               borderRadius: 8,
@@ -119,6 +120,7 @@ const LoginScreen = () => {
           >
             <TextInput
               placeholder="Enter password"
+              placeholderTextColor="grey"
               value={passwd}
               onChangeText={setPasswd}
               secureTextEntry={showPassword}

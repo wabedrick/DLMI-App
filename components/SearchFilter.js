@@ -11,7 +11,8 @@ const SearchFilter = ({ icon, placeholder, query, setQuery }) => {
         value={query}
         onChangeText={setQuery}
         placeholder={placeholder}
-        style={{ fontSize: 16, marginLeft: 8, color: "#808080" }}
+        placeholderTextColor={"#808080"}
+        style={{ fontSize: 16, marginLeft: 8 }}
       />
     </View>
   );

@@ -151,3 +151,89 @@ export function ourFunction() {
   ];
   return ourServices;
 }
+
+export const missionalCommunities = [
+  {
+    id: 1,
+    name: "Kabowa",
+    location: "Kabowa",
+    leader: "Pr. Sarah",
+  },
+
+  {
+    id: 2,
+    name: "Makerere",
+    location: "Makerere University",
+    leader: "Tendo",
+  },
+
+  {
+    id: 3,
+    name: "Kyambogo",
+    location: "Kyambogo University",
+    leader: "Eric",
+  },
+
+  {
+    id: 4,
+    name: "Zion",
+    location: "Bunamwaaya",
+    leader: "Martin TG",
+  },
+
+  {
+    id: 5,
+    name: "Las Vegas",
+    location: "Salama Munyonyo",
+    leader: "Ruth",
+  },
+
+  {
+    id: 6,
+    name: "City",
+    location: "Kampala Center",
+    leader: "Ancle Bob",
+  },
+
+  {
+    id: 7,
+    name: "Zoe",
+    location: "Kawuku Entebbe Road",
+    leader: "Douglas",
+  },
+
+  {
+    id: 8,
+    name: "Vegas Brisk",
+    location: "Unknown",
+    leader: "Senga Namale",
+  },
+
+  {
+    id: 9,
+    name: "Dominion",
+    location: "Buyala, Mpigi",
+    leader: "Pr. Jeho",
+  },
+
+  {
+    id: 10,
+    name: "Champions Elohim",
+    location: "Kabalagala",
+    leader: "Rachael Admin",
+  },
+
+  {
+    id: 11,
+    name: "Muyenga",
+    location: "Muyenga Bukasa",
+    leader: "Mr. Mpagi",
+  },
+
+  {
+    id: 12,
+    name: "Vegas Emit",
+    location: "Kasangati",
+    leader: "Fresh Dad Denis",
+  },
+];

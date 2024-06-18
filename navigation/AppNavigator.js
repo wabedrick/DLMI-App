@@ -14,6 +14,8 @@ import ChurchMembersScreen from "@/screens/ChurchMembersScreen";
 import AnnoucementsScreen from "@/screens/AnnoucementsScreen";
 import AboutDLMIScreen from "@/screens/AboutDLMIScreen";
 import GivingScreen from "@/screens/GivingScreen";
+import WeeklyReports from "@/screens/missionalComunity/WeeklyReports";
+import MissinalCommunity from "@/screens/missionalComunity/MissionalCommunity";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +35,8 @@ const AppNavigator = () => {
       <Stack.Screen name="give" component={GivingScreen} />
       <Stack.Screen name="annoucements" component={AnnoucementsScreen} />
       <Stack.Screen name="about" component={AboutDLMIScreen} />
+      <Stack.Screen name="mcReport" component={WeeklyReports} />
+      <Stack.Screen name="missionalCommunity" component={MissinalCommunity} />
     </Stack.Navigator>
     // </NavigationContainer>
   );
