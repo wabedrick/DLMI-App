@@ -41,7 +41,7 @@ const MC = ({ mcList }) => {
             key={item.id}
           >
             <Text style={{ fontSize: 18, fontWeight: "500", color: "blue" }}>
-              {item.name}
+              {item.mc_name}
             </Text>
           </Pressable>
         )}

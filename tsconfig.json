@@ -17,6 +17,12 @@
     "navigation/AppNavigator.js",
     "app/(tabs)/index.js",
     "screens/retension/RegisterScreen.js",
-    "constants/Constants.js"
+    "constants/Constants.js",
+    "screens/missionalComunity/McMembers.js",
+    "screens/missionalComunity/MissionalCommunity.js",
+    "screens/missionalComunity/RegisterMC.js",
+    "screens/missionalComunity/ViewPreviousReports.js",
+    "screens/missionalComunity/WeeklyReports.js",
+    "screens/missionalComunity/WriteWeeklyReport.js"
   ]
 }

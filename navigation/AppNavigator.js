@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import RegisterScreen from "@/screens/retension/RegisterScreen";
@@ -16,6 +15,14 @@ import AboutDLMIScreen from "@/screens/AboutDLMIScreen";
 import GivingScreen from "@/screens/GivingScreen";
 import WeeklyReports from "@/screens/missionalComunity/WeeklyReports";
 import MissinalCommunity from "@/screens/missionalComunity/MissionalCommunity";
+import RegisterMcMember from "@/screens/missionalComunity/RegisterMcMember";
+import McMembers from "@/screens/missionalComunity/McMembers";
+import McMemberAdmin from "@/screens/missionalComunity/McMemberAdmin";
+import McMember from "@/screens/missionalComunity/McMember";
+import RegisterMC from "@/screens/missionalComunity/RegisterMC";
+import MissionalCommunityButtons from "@/screens/missionalComunity/MissionalCommunityButtons";
+import WriteWeeklyReport from "@/screens/missionalComunity/WriteWeeklyReport";
+import ViewPreviousReports from "@/screens/missionalComunity/ViewPreviousReports";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +44,17 @@ const AppNavigator = () => {
       <Stack.Screen name="about" component={AboutDLMIScreen} />
       <Stack.Screen name="mcReport" component={WeeklyReports} />
       <Stack.Screen name="missionalCommunity" component={MissinalCommunity} />
+      <Stack.Screen name="registermcMember" component={RegisterMcMember} />
+      <Stack.Screen name="mcMembers" component={McMembers} />
+      <Stack.Screen name="mcMember" component={McMember} />
+      <Stack.Screen name="mcMemberAdmin" component={McMemberAdmin} />
+      <Stack.Screen name="registerMc" component={RegisterMC} />
+      <Stack.Screen name="mcButtons" component={MissionalCommunityButtons} />
+      <Stack.Screen name="writeWeeklyReport" component={WriteWeeklyReport} />
+      <Stack.Screen
+        name="viewPreviousReports"
+        component={ViewPreviousReports}
+      />
     </Stack.Navigator>
     // </NavigationContainer>
   );

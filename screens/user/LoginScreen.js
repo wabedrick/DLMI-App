@@ -5,71 +5,55 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 import DLMILog from "@/assets/images/dlmi-icon-logo.png";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import { users } from "@/constants/Constants";
 
 const LoginScreen = () => {
-  const [uname, setUname] = useState("");
-  const [passwd, setPasswd] = useState("");
+  const [username, setUname] = useState("");
+  const [password, setPasswd] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(true);
-  // const [users, setUsers] = useState([]);
 
   const navigation = useNavigation();
 
-  // This logic is to return that user whose username
-  //   and password has been enterd
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://10.0.2.2:80/divineLife/user-api.php")
-  //     .then((response) => {
-  //       setUsers(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
-  // const validUser = users.find(
-  //   (vUser) => vUser.uname === uname && vUser.passwd === passwd
-  // );
-  // const handleLogin = () => {
-  //   setUname(uname);
-  //   setPasswd(passwd);
-  //   if (uname === "" || passwd === "") {
-  //     setError("Please Enter the Username and password");
-  //   } else if (validUser) {
-  //     alert("Successfully Logged In");
-  //     navigation.navigate("welcome", { username: uname });
-  //     setUname("");
-  //     setPasswd("");
-  //     setError("");
-  //   } else {
-  //     setError("Incorrect Username Or Password");
-  //   }
-  // };
-
-  // This logic is to return that user whose username and password has been enterd
-  const registeredUser = users.find(
-    (ruser) => ruser.username === uname && ruser.password === passwd
-  );
+  // This logic is to return that user whose username and password has been entered
   const handleLogin = () => {
-    setUname(uname);
-    setPasswd(passwd);
-    if (uname === "" || passwd === "") {
-      setError("Please Enter the Username and password");
-    } else if (registeredUser) {
-      navigation.navigate("Main", { username: uname });
-      setError("");
-      setUname("");
-      setPasswd("");
+    axios
+      .post("http://10.0.2.2:80/DLMI/users/userRegister.php", {
+        action: "login",
+        username,
+        password,
+      })
+      .then((response) => {
+        const { status, message } = response.data;
+        if (status === "success") {
+          navigation.navigate("Main", { username });
+        } else {
+          Alert.alert("Error", message);
+          setError(message);
+        }
+      })
+      .catch((error) => {
+        handleAxiosError(error);
+        setError(message);
+      });
+  };
+
+  const handleAxiosError = (error) => {
+    if (error.response) {
+      console.error("Response error:", error.response.data);
+      Alert.alert("Error", error.response.data.message || "An error occurred");
+    } else if (error.request) {
+      console.error("Request error:", error.request);
+      Alert.alert("Error", "No response from server");
     } else {
-      setError("Incorrect Username Or Password");
+      console.error("Error:", error.message);
+      Alert.alert("Error", error.message);
     }
   };
 
@@ -92,7 +76,7 @@ const LoginScreen = () => {
           <TextInput
             placeholder="Enter username"
             placeholderTextColor="grey"
-            value={uname}
+            value={username}
             onChangeText={setUname}
             style={{
               backgroundColor: "lightgray",
@@ -121,7 +105,7 @@ const LoginScreen = () => {
             <TextInput
               placeholder="Enter password"
               placeholderTextColor="grey"
-              value={passwd}
+              value={password}
               onChangeText={setPasswd}
               secureTextEntry={showPassword}
               style={{ flex: 1, fontSize: 20 }}
@@ -129,7 +113,7 @@ const LoginScreen = () => {
 
             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
               <Text style={{ fontSize: 20, color: "green" }}>
-                {passwd !== "" ? (showPassword ? "Show" : "Hide") : null}
+                {password !== "" ? (showPassword ? "Show" : "Hide") : null}
               </Text>
             </TouchableOpacity>
           </View>

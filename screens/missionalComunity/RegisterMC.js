@@ -10,34 +10,32 @@ import {
 } from "react-native";
 import DLMILog from "@/assets/images/dlmi-icon-logo.png";
 import axios from "axios";
-
+import HeaderOne from "@/components/HeaderOne";
 import { useNavigation } from "@react-navigation/native";
 
 const Register = () => {
-  const [username, setUname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(true);
-  // const [users, setUsers] = useState([]);
-  const [missional_community, setMissinalCommunity] = useState("");
+  const [name, setName] = useState("");
+  const [leader, setLeader] = useState("");
+  const [location, setLocation] = useState("");
+  const [leaderPhoneNumber, setLeaderPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
 
   const navigation = useNavigation();
 
   const handleRegister = () => {
     axios
-      .post("http://10.0.2.2:80/DLMI/users/userRegister.php", {
+      .post("http://10.0.2.2:80/DLMI/missionalCommunity/registerMC.php", {
         action: "register",
-        username,
-        email,
-        missional_community,
-        password,
+        name,
+        leader,
+        location,
+        leaderPhoneNumber,
       })
       .then((response) => {
         const { status, message } = response.data;
         if (status === "success") {
           Alert.alert("Success", message);
-          navigation.navigate("Login");
+          navigation.navigate("missionalCommunity");
         } else {
           Alert.alert("Error", message);
         }
@@ -65,6 +63,7 @@ const Register = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
+      <HeaderOne iconName={"arrow-left"} />
       <ScrollView>
         <View
           style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
@@ -81,13 +80,13 @@ const Register = () => {
           />
           <View>
             <Text style={{ fontSize: 26, fontWeight: "700" }}>
-              Register Here
+              MC Registration
             </Text>
 
             <TextInput
-              placeholder="Create Username"
-              value={username}
-              onChangeText={setUname}
+              placeholder="MC Name"
+              value={name}
+              onChangeText={setName}
               style={{
                 backgroundColor: "lightgray",
                 color: "gray",
@@ -101,9 +100,9 @@ const Register = () => {
             />
 
             <TextInput
-              placeholder="Phone Number or Email"
-              value={email}
-              onChangeText={setEmail}
+              placeholder="MC Leader's name"
+              value={leader}
+              onChangeText={setLeader}
               style={{
                 backgroundColor: "lightgray",
                 color: "gray",
@@ -115,10 +114,10 @@ const Register = () => {
               }}
             />
             <TextInput
-              placeholder="Missional Community"
+              placeholder="MC Location"
               placeholderTextColor="grey"
-              value={missional_community}
-              onChangeText={setMissinalCommunity}
+              value={location}
+              onChangeText={setLocation}
               style={{
                 // width: "100%",
                 paddingHorizontal: 16,
@@ -129,30 +128,22 @@ const Register = () => {
                 marginBottom: 16,
               }}
             />
-            <View
+
+            <TextInput
+              placeholder="Leader Phone Number"
+              placeholderTextColor="grey"
+              value={leaderPhoneNumber}
+              onChangeText={setLeaderPhoneNumber}
               style={{
-                backgroundColor: "lightgray",
-                color: "gray",
+                // width: "100%",
                 paddingHorizontal: 16,
                 paddingVertical: 16,
+                backgroundColor: "lightgrey",
                 borderRadius: 8,
-                flexDirection: "row",
+                fontSize: 22,
                 marginBottom: 16,
               }}
-            >
-              <TextInput
-                placeholder="Create Password"
-                secureTextEntry={showPassword}
-                value={password}
-                onChangeText={setPassword}
-                style={{ fontSize: 20, flex: 1 }}
-              />
-              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                <Text style={{ color: "green", fontSize: 20 }}>
-                  {password !== "" ? (showPassword ? "Show" : "Hide") : null}
-                </Text>
-              </TouchableOpacity>
-            </View>
+            />
 
             <TouchableOpacity
               onPress={handleRegister}
@@ -167,9 +158,6 @@ const Register = () => {
             >
               <Text style={{ fontSize: 22, fontWeight: "600" }}>Register</Text>
             </TouchableOpacity>
-            {/* {message ? (
-              <Text style={{ color: "red", fontSize: 20 }}>{message}</Text>
-            ) : null} */}
           </View>
         </View>
       </ScrollView>

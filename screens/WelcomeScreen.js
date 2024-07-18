@@ -2,10 +2,8 @@ import React from "react";
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DLMILog from "@/assets/images/dlmi-icon-logo.png";
-import { StackNavigationProp } from "@react-navigation/stack";
 
 import { useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "@/components/navigation/types";
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
@@ -41,17 +39,6 @@ const WelcomeScreen = () => {
         But grow in grace, and in the knowledge of our Lord and Saviour Jesus
         Christ. To him be glory both now and forever. Amen.
       </Text>
-      {/* <Text
-        style={{
-          color: "#3c444c",
-          fontSize: 44,
-          fontWeight: "bold",
-          marginBottom: 50,
-        }}
-      >
-        Be a soul Winner
-      </Text> */}
-
       <TouchableOpacity
         onPress={() => navigation.navigate("Login")}
         style={{

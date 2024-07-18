@@ -1,29 +1,23 @@
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import Fellowship from "@/assets/images/fellowship.jpeg";
 
 import Report1 from "@/assets/icons/report1.png";
 import Members from "@/assets/icons/members.png";
 import Person from "@/assets/icons/person.png";
 import Giving from "@/assets/icons/giving.png";
-import HeaderOne from "@/components/Header";
+import HeaderOne from "@/components/HeaderOne";
 
 const MissionalCommunityScreen = ({ navigation, route }) => {
   const { item } = route.params;
+  mc_name = item.mc_name;
+
   return (
     <View style={{ backgroundColor: "white", borderStartColor: "blue" }}>
       <HeaderOne iconName={"arrow-left"} />
       <View>
         <Text style={{ textAlign: "center", fontSize: 22, fontWeight: "900" }}>
-          {item.name} MC
+          {mc_name} MC
         </Text>
       </View>
       <View style={{ paddingHorizontal: 8, marginTop: 20 }}>
@@ -31,7 +25,7 @@ const MissionalCommunityScreen = ({ navigation, route }) => {
           source={Fellowship}
           style={{
             width: "100%",
-            height: 250,
+            height: "20%",
             borderRadius: 8,
             shadowRadius: 8,
             borderColor: "black",
@@ -39,7 +33,7 @@ const MissionalCommunityScreen = ({ navigation, route }) => {
         />
 
         <View style={{ flexDirection: "row" }}>
-          <Pressable onPress={() => navigation.navigate("mcReport")}>
+          <Pressable onPress={() => navigation.navigate("mcReport", { item })}>
             <View
               style={{
                 marginBottom: 8,
@@ -76,7 +70,9 @@ const MissionalCommunityScreen = ({ navigation, route }) => {
             </View>
           </Pressable>
 
-          <Pressable onPress={() => alert("Our Members")}>
+          <Pressable
+            onPress={() => navigation.navigate("mcMembers", { mc_name })}
+          >
             <View
               style={{
                 marginBottom: 8,
@@ -115,7 +111,7 @@ const MissionalCommunityScreen = ({ navigation, route }) => {
         </View>
 
         <View style={{ flexDirection: "row" }}>
-          <Pressable onPress={() => alert("Adding a new Member.")}>
+          <Pressable onPress={() => navigation.navigate("registermcMember")}>
             <View
               style={{
                 marginBottom: 8,
@@ -152,7 +148,7 @@ const MissionalCommunityScreen = ({ navigation, route }) => {
             </View>
           </Pressable>
 
-          <Pressable onPress={() => alert("Giving to mc")}>
+          <Pressable onPress={() => navigation.navigate("registerMc")}>
             <View
               style={{
                 marginBottom: 8,
@@ -184,7 +180,7 @@ const MissionalCommunityScreen = ({ navigation, route }) => {
                   textAlign: "center",
                 }}
               >
-                Giving
+                Register MC
               </Text>
             </View>
           </Pressable>

@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const HeaderOne = ({ iconName }) => {
+  const navigation = useNavigation();
   return (
     <View style={{ flexDirection: "row" }}>
       <TouchableOpacity onPress={() => navigation.goBack()} style={{ flex: 1 }}>

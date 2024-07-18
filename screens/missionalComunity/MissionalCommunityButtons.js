@@ -4,12 +4,13 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import HeaderOne from "@/components/HeaderOne";
 
-const WeeklyReports = ({ route }) => {
+const MissionalCommunityButtons = ({}) => {
   const navigation = useNavigation();
-  const { item } = route.params;
-  const mc_name = item.mc_name;
+
   return (
     <View style={{ flex: 1 }}>
+      {/* Header Rendered Here */}
+
       <HeaderOne iconName={"arrow-left"} />
 
       <ScrollView
@@ -17,6 +18,47 @@ const WeeklyReports = ({ route }) => {
         style={{ marginTop: 30, paddingHorizontal: 16 }}
       >
         <View style={{ alignItems: "center" }}>
+          <View style={{ marginTop: 25 }}>
+            <Text style={styles.textbelowcss}>
+              DIVINE LIFE MINISTRIES INTERNATIONAL
+            </Text>
+            <Text style={{ fontSize: 20, marginBottom: 8 }}>
+              Lead By{" "}
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "blue",
+                  letterSpacing: 1.2,
+                }}
+              >
+                Pastor Magzi James
+              </Text>
+            </Text>
+            <Text
+              style={{
+                fontSize: 22,
+                textAlign: "center",
+                marginTop: 20,
+                fontWeight: "bold",
+              }}
+            >
+              OUR THEME SCRIPTURE
+            </Text>
+            <Text
+              style={{
+                color: "red",
+                fontSize: 22,
+                marginTop: 12,
+                fontWeight: "900",
+              }}
+            >
+              2 Peter 3:18
+            </Text>
+            <Text style={{ fontSize: 20, fontWeight: "500" }}>
+              But grow in grace, and in the knowledge of our Lord and Saviour
+              Jesus Christ. To him be glory both now and for ever. Amen
+            </Text>
+          </View>
           <Text
             style={{
               textAlign: "center",
@@ -26,13 +68,11 @@ const WeeklyReports = ({ route }) => {
               marginTop: 25,
             }}
           >
-            MC WEEKLY REPORTS
+            MISSIONAL COMMUNITY
           </Text>
           <View style={{ flexDirection: "row" }}>
             <Pressable
-              onPress={() =>
-                navigation.navigate("viewPreviousReports", { mc_name })
-              }
+              onPress={() => navigation.navigate("missionalCommunity")}
             >
               <View
                 style={{
@@ -60,16 +100,12 @@ const WeeklyReports = ({ route }) => {
                     textAlign: "center",
                   }}
                 >
-                  View Previous Reports
+                  View MCs
                 </Text>
               </View>
             </Pressable>
 
-            <Pressable
-              onPress={() =>
-                navigation.navigate("writeWeeklyReport", { mc_name })
-              }
-            >
+            <Pressable onPress={() => navigation.navigate("registerMc")}>
               <View
                 style={{
                   marginBottom: 8,
@@ -83,7 +119,7 @@ const WeeklyReports = ({ route }) => {
                 }}
               >
                 <FontAwesome
-                  name="pencil"
+                  name="plus"
                   size={60}
                   style={{ paddingVertical: 8, color: "white" }}
                 />
@@ -96,7 +132,7 @@ const WeeklyReports = ({ route }) => {
                     textAlign: "center",
                   }}
                 >
-                  Write Report
+                  Add an MC
                 </Text>
               </View>
             </Pressable>
@@ -107,7 +143,7 @@ const WeeklyReports = ({ route }) => {
   );
 };
 
-export default WeeklyReports;
+export default MissionalCommunityButtons;
 
 const styles = StyleSheet.create({
   textbelowcss: {
