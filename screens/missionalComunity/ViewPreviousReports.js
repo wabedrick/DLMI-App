@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import SearchFilter from "@/components/SearchFilter";
 import HeaderOne from "@/components/HeaderOne";
 
@@ -30,6 +29,7 @@ const McMembers = ({ route }) => {
 
     axios
       .get(
+        // `http://divinelifeministriesinternational.org/missionalCommunity/weeklyReport.php?action=getReportsByMissionalCommunity&mcName=${mc_name}`
         `http://10.0.2.2:80/DLMI/missionalCommunity/weeklyReport.php?action=getReportsByMissionalCommunity&mcName=${mc_name}`
       )
       .then((response) => {
@@ -51,7 +51,7 @@ const McMembers = ({ route }) => {
 
   useEffect(() => {
     if (query) {
-      setFilteredMcMembers(
+      setFilteredReports(
         reports.filter((report) =>
           report.meetingDate.toLowerCase().includes(query.toLowerCase())
         )
@@ -97,7 +97,7 @@ const McMembers = ({ route }) => {
             fontWeight: "bold",
           }}
         >
-          {mc_name} MC Members
+          {mc_name} MC Weekly Reports
         </Text>
 
         <View style={{ marginTop: 22, marginBottom: 25 }}>

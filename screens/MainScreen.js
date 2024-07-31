@@ -1,348 +1,3 @@
-// import {
-//   Pressable,
-//   ScrollView,
-//   StyleSheet,
-//   Text,
-//   TouchableOpacity,
-//   View,
-// } from "react-native";
-// import React, { useState, useEffect } from "react";
-// import { FontAwesome } from "@expo/vector-icons";
-// import { useNavigation } from "@react-navigation/native";
-// import Header from "@/components/Header";
-// import { weeklyEvents } from "@/constants/Constants";
-// import WeeklyEventsFilter from "@/components/WeeklyEventsFilter";
-// import SearchFilter from "@/components/SearchFilter";
-
-// const MainScreen = ({ route }) => {
-//   const navigation = useNavigation();
-//   const { username } = route.params;
-//   const [query, setQuery] = useState("");
-//   const [filteredWeeklyEvent, setFilteredWeeklyEvent] = useState(weeklyEvents);
-
-//   useEffect(() => {
-//     // This is a search logic for the weekly events
-//     setFilteredWeeklyEvent(
-//       weeklyEvents.filter((event) =>
-//         event.day.toLowerCase().includes(query.toLowerCase())
-//       )
-//     );
-//   }, [query, weeklyEvents]);
-
-//   return (
-//     <View style={{ flex: 1 }}>
-//       {/* Header Rendered Here */}
-
-//       <Header headerText={username} headerIcon={"bell-o"} />
-
-//       {/* The SearchFilter Component */}
-//       <View style={{ marginTop: 20, paddingHorizontal: 16 }}>
-//         <SearchFilter
-//           icon={"search"}
-//           placeholder={"Such for a day of the week for an event"}
-//           query={query}
-//           setQuery={setQuery}
-//         />
-//       </View>
-
-//       {/* Weekly events */}
-//       <View style={{ marginTop: 22, paddingHorizontal: 16 }}>
-//         <Text
-//           style={{
-//             fontSize: 25,
-//             fontWeight: "bold",
-//             fontFamily: "serif",
-//             marginBottom: 10,
-//           }}
-//         >
-//           Weekly Events
-//         </Text>
-//         {/* WeeklyEventsFilter rendered */}
-//         <Pressable onPress={() => alert("This is the event this day")}>
-//           <WeeklyEventsFilter weeklyEvents={filteredWeeklyEvent} />
-//         </Pressable>
-//       </View>
-
-//       <ScrollView
-//         showsVerticalScrollIndicator={false}
-//         style={{ marginTop: 30, paddingHorizontal: 16, width: "100%" }}
-//       >
-//         <View style={{ alignItems: "center" }}>
-//           <Text
-//             style={{
-//               fontSize: 28,
-//               fontWeight: "bold",
-//               fontFamily: "serif",
-//               marginBottom: 10,
-//             }}
-//           >
-//             Our Services
-//           </Text>
-//           <View style={{ flexDirection: "row" }}>
-//             <Pressable onPress={() => alert("Hi Chating..")}>
-//               <View
-//                 style={{
-//                   marginBottom: 8,
-//                   borderRadius: 10,
-//                   backgroundColor: "#008080",
-//                   alignItems: "center",
-//                   height: 140,
-//                   width: "100%",
-//                   margin: 8,
-//                   paddingBottom: 8,
-//                 }}
-//               >
-//                 <FontAwesome
-//                   name="whatsapp"
-//                   size={60}
-//                   style={{ paddingVertical: 8, color: "white" }}
-//                 />
-//                 <Text
-//                   style={{
-//                     color: "white",
-//                     fontSize: 16,
-//                     lineHeight: 20,
-//                     fontWeight: "bold",
-//                     textAlign: "center",
-//                   }}
-//                 >
-//                   Chat
-//                 </Text>
-//               </View>
-//             </Pressable>
-
-//             <TouchableOpacity onPress={() => navigation.navigate("mcButtons")}>
-//               <View
-//                 style={{
-//                   marginBottom: 8,
-//                   borderRadius: 10,
-//                   backgroundColor: "#FFA500",
-//                   alignItems: "center",
-//                   height: 140,
-//                   width: "50%",
-//                   margin: 8,
-//                   paddingBottom: 8,
-//                 }}
-//               >
-//                 <FontAwesome
-//                   name="dollar"
-//                   size={60}
-//                   style={{ paddingVertical: 8, color: "white" }}
-//                 />
-//                 <Text
-//                   style={{
-//                     color: "white",
-//                     fontSize: 16,
-//                     lineHeight: 20,
-//                     fontWeight: "bold",
-//                     textAlign: "center",
-//                   }}
-//                 >
-//                   Missional Communities
-//                 </Text>
-//               </View>
-//             </TouchableOpacity>
-//           </View>
-
-//           <View style={{ flexDirection: "row" }}>
-//             <TouchableOpacity onPress={() => alert("Our SERMONS")}>
-//               <View
-//                 style={{
-//                   marginBottom: 8,
-//                   borderRadius: 10,
-//                   backgroundColor: "blue",
-//                   alignItems: "center",
-//                   height: 140,
-//                   width: 170,
-//                   margin: 8,
-//                   paddingBottom: 8,
-//                 }}
-//               >
-//                 <FontAwesome
-//                   name="file-video-o"
-//                   size={60}
-//                   style={{ paddingVertical: 8, color: "white" }}
-//                 />
-//                 <Text
-//                   style={{
-//                     color: "white",
-//                     fontSize: 16,
-//                     lineHeight: 20,
-//                     fontWeight: "bold",
-//                     textAlign: "center",
-//                   }}
-//                 >
-//                   Sermons
-//                 </Text>
-//               </View>
-//             </TouchableOpacity>
-
-//             <Pressable onPress={() => navigation.navigate("RegisterNew")}>
-//               <View
-//                 style={{
-//                   marginBottom: 8,
-//                   borderRadius: 10,
-//                   backgroundColor: "lightblue",
-//                   alignItems: "center",
-//                   height: 140,
-//                   width: 170,
-//                   margin: 8,
-//                   paddingBottom: 8,
-//                 }}
-//               >
-//                 <FontAwesome
-//                   name="registered"
-//                   size={60}
-//                   style={{ paddingVertical: 8, color: "white" }}
-//                 />
-//                 <Text
-//                   style={{
-//                     color: "white",
-//                     fontSize: 16,
-//                     lineHeight: 20,
-//                     fontWeight: "bold",
-//                     textAlign: "center",
-//                   }}
-//                 >
-//                   New Member
-//                 </Text>
-//               </View>
-//             </Pressable>
-//           </View>
-
-//           <View style={{ flexDirection: "row" }}>
-//             <View
-//               style={{
-//                 marginBottom: 8,
-//                 borderRadius: 10,
-//                 backgroundColor: "#C0C0C0",
-//                 alignItems: "center",
-//                 height: 140,
-//                 width: 170,
-//                 margin: 8,
-//                 paddingBottom: 8,
-//               }}
-//             >
-//               <FontAwesome
-//                 name="group"
-//                 size={60}
-//                 style={{ paddingVertical: 8, color: "white" }}
-//               />
-//               <Text
-//                 style={{
-//                   color: "white",
-//                   fontSize: 16,
-//                   lineHeight: 20,
-//                   fontWeight: "bold",
-//                   textAlign: "center",
-//                 }}
-//               >
-//                 Church Members
-//               </Text>
-//             </View>
-
-//             <View
-//               style={{
-//                 marginBottom: 8,
-//                 borderRadius: 10,
-//                 backgroundColor: "#808000",
-//                 alignItems: "center",
-//                 height: 140,
-//                 width: 170,
-//                 margin: 8,
-//                 paddingBottom: 8,
-//               }}
-//             >
-//               <FontAwesome
-//                 name="envelope"
-//                 size={60}
-//                 style={{ paddingVertical: 8, color: "white" }}
-//               />
-//               <Text
-//                 style={{
-//                   color: "white",
-//                   fontSize: 16,
-//                   lineHeight: 20,
-//                   fontWeight: "bold",
-//                   textAlign: "center",
-//                 }}
-//               >
-//                 Giving
-//               </Text>
-//             </View>
-//           </View>
-
-//           <View style={{ flexDirection: "row" }}>
-//             <View
-//               style={{
-//                 marginBottom: 8,
-//                 borderRadius: 10,
-//                 backgroundColor: "#00FF00",
-//                 alignItems: "center",
-//                 height: 140,
-//                 width: 170,
-//                 margin: 8,
-//                 paddingBottom: 8,
-//               }}
-//             >
-//               <FontAwesome
-//                 name="address-card-o"
-//                 size={60}
-//                 style={{ paddingVertical: 8, color: "white" }}
-//               />
-//               <Text
-//                 style={{
-//                   color: "white",
-//                   fontSize: 16,
-//                   lineHeight: 20,
-//                   fontWeight: "bold",
-//                   textAlign: "center",
-//                 }}
-//               >
-//                 About DLMI
-//               </Text>
-//             </View>
-
-//             <View
-//               style={{
-//                 marginBottom: 8,
-//                 borderRadius: 10,
-//                 backgroundColor: "#800080",
-//                 alignItems: "center",
-//                 height: 140,
-//                 width: 170,
-//                 margin: 8,
-//                 paddingBottom: 8,
-//               }}
-//             >
-//               <FontAwesome
-//                 name="heart-o"
-//                 size={60}
-//                 style={{ paddingVertical: 8, color: "white" }}
-//               />
-//               <Text
-//                 style={{
-//                   color: "white",
-//                   fontSize: 16,
-//                   lineHeight: 20,
-//                   fontWeight: "bold",
-//                   textAlign: "center",
-//                 }}
-//               >
-//                 Annoucements
-//               </Text>
-//             </View>
-//           </View>
-//         </View>
-//       </ScrollView>
-//     </View>
-//   );
-// };
-
-// export default MainScreen;
-
-// const styles = StyleSheet.create({});
-
 import React, { useState, useEffect } from "react";
 import {
   Dimensions,
@@ -350,52 +5,94 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   SafeAreaView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Header from "@/components/Header";
-import { weeklyEvents } from "@/constants/Constants";
-import WeeklyEventsFilter from "@/components/WeeklyEventsFilter";
-import SearchFilter from "@/components/SearchFilter";
 
 const { width, height } = Dimensions.get("window");
 
 const MainScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { username } = route.params;
-  const [query, setQuery] = useState("");
-  const [filteredWeeklyEvent, setFilteredWeeklyEvent] = useState(weeklyEvents);
+  const { data } = route.params || {};
+  const [userMC, setUserMC] = useState([]);
+  const [userData, setUserData] = useState({});
+
+  // useEffect(() => {
+  //   setFilteredWeeklyEvent(
+  //     weeklyEvents.filter((event) =>
+  //       event.day.toLowerCase().includes(query.toLowerCase())
+  //     )
+  //   );
+  // }, [query, weeklyEvents]);
+  const fetchUserData = async () => {
+    const response = await axios.get(
+      // "http://divinelifeministriesinternational.org/users/userRegister.php",
+      "http://10.0.2.2:80/DLMI/users/userRegister.php",
+      {
+        headers: {
+          Authorization: `Bearer ${route.params.token}`,
+        },
+      }
+    );
+    setUserData(response.data);
+  };
 
   useEffect(() => {
-    setFilteredWeeklyEvent(
-      weeklyEvents.filter((event) =>
-        event.day.toLowerCase().includes(query.toLowerCase())
-      )
-    );
-  }, [query, weeklyEvents]);
+    fetchUserData();
+  }, []);
+  const userMCdetails = () => {
+    useEffect(() => {
+      axios
+        .get(
+          `http://divinelifeministriesinternational.org/missionalCommunity/registerMC.php?action=getMemberMC&username=${username}`
+        )
+        .then((response) => {
+          if (response.data.status === "success") {
+            setUserMC(response.data.data);
+            // setFilteredMC(response.data.data);
+          } else {
+            console.error("Error:", response.data.message);
+          }
+          // setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          // setLoading(false);
+        });
+    }, []);
+    const mcUser = userMC.find((mc) => {
+      mc.username.toLowerCase().equals(username.toLowerCase());
+    });
+
+    if (mcUser) {
+      navigation.navigate("mcs", { userMC });
+    } else {
+      alert("You dont belong to any MC");
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header headerText={username} headerIcon={"bell-o"} />
+      <Header headerText={userData.username} headerIcon={"bell-o"} />
 
-      <View style={styles.searchContainer}>
+      {/* <View style={styles.searchContainer}>
         <SearchFilter
           icon={"search"}
           placeholder={"Search for a day of the week for an event"}
           query={query}
           setQuery={setQuery}
         />
-      </View>
+      </View> */}
 
-      <View style={styles.eventsContainer}>
+      {/* <View style={styles.eventsContainer}>
         <Text style={styles.heading}>Weekly Events</Text>
         <Pressable onPress={() => alert("This is the event this day")}>
           <WeeklyEventsFilter weeklyEvents={filteredWeeklyEvent} />
         </Pressable>
-      </View>
+      </View> */}
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -407,13 +104,15 @@ const MainScreen = ({ route }) => {
             icon="whatsapp"
             text="Chat"
             backgroundColor="#008080"
-            onPress={() => alert("Hi Chating..")}
+            onPress={() => alert("Comming soon..")}
           />
           <ServiceButton
             icon="dollar"
             text="Missional Communities"
             backgroundColor="#FFA500"
-            onPress={() => navigation.navigate("mcButtons")}
+            onPress={() =>
+              navigation.navigate("missionalCommunity", { data: userData })
+            }
           />
         </View>
         <View style={styles.serviceContainer}>
@@ -421,13 +120,13 @@ const MainScreen = ({ route }) => {
             icon="file-video-o"
             text="Sermons"
             backgroundColor="blue"
-            onPress={() => alert("Our SERMONS")}
+            onPress={() => alert("Comming soon..")}
           />
           <ServiceButton
             icon="registered"
             text="New Member"
             backgroundColor="lightblue"
-            onPress={() => navigation.navigate("RegisterNew")}
+            onPress={() => alert("Coming soon..")}
           />
         </View>
         <View style={styles.serviceContainer}>
@@ -435,11 +134,13 @@ const MainScreen = ({ route }) => {
             icon="group"
             text="Church Members"
             backgroundColor="#C0C0C0"
+            onPress={undefined}
           />
           <ServiceButton
             icon="envelope"
             text="Giving"
             backgroundColor="#808000"
+            onPress={undefined}
           />
         </View>
         <View style={styles.serviceContainer}>
@@ -447,11 +148,13 @@ const MainScreen = ({ route }) => {
             icon="address-card-o"
             text="About DLMI"
             backgroundColor="#00FF00"
+            onPress={undefined}
           />
           <ServiceButton
             icon="heart-o"
             text="Announcements"
             backgroundColor="#800080"
+            onPress={undefined}
           />
         </View>
       </ScrollView>
@@ -519,3 +222,179 @@ const styles = StyleSheet.create({
 });
 
 export default MainScreen;
+
+// import React, { useState, useEffect } from "react";
+// import {
+//   Dimensions,
+//   Pressable,
+//   ScrollView,
+//   StyleSheet,
+//   Text,
+//   TouchableOpacity,
+//   View,
+//   SafeAreaView,
+// } from "react-native";
+// import { FontAwesome } from "@expo/vector-icons";
+// import { useNavigation } from "@react-navigation/native";
+// import Header from "@/components/Header";
+// import { weeklyEvents } from "@/constants/Constants";
+// import WeeklyEventsFilter from "@/components/WeeklyEventsFilter";
+// import SearchFilter from "@/components/SearchFilter";
+
+// const { width, height } = Dimensions.get("window");
+
+// const MainScreen = ({ route }) => {
+//   const navigation = useNavigation();
+//   const { data } = route.params || {};
+//   const [query, setQuery] = useState("");
+//   const [filteredWeeklyEvent, setFilteredWeeklyEvent] = useState(weeklyEvents);
+//   const [userMC, setUserMC] = useState([]);
+
+//   useEffect(() => {
+//     setFilteredWeeklyEvent(
+//       weeklyEvents.filter((event) =>
+//         event.day.toLowerCase().includes(query.toLowerCase())
+//       )
+//     );
+//   }, [query]);
+
+//   // const userMCdetails = () => {
+//   //   useEffect(() => {
+//   //     axios
+//   //       .get(
+//   //         `http://divinelifeministriesinternational.org/missionalCommunity/registerMC.php?action=getMemberMC&username=${username}`
+//   //       )
+//   //       .then((response) => {
+//   //         if (response.data.status === "success") {
+//   //           setUserMC(response.data.data);
+//   //         } else {
+//   //           console.error("Error:", response.data.message);
+//   //         }
+//   //       })
+//   //       .catch((error) => {
+//   //         console.error("Error:", error);
+//   //       });
+//   //   }, []);
+//   //   const mcUser = userMC.find((mc) =>
+//   //     mc.username.toLowerCase().equals(username.toLowerCase())
+//   //   );
+
+//   //   if (mcUser) {
+//   //     navigation.navigate("mcs", { userMC });
+//   //   } else {
+//   //     alert("You dont belong to any MC");
+//   //   }
+//   // };
+
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <View>
+//         {Array.isArray(data) &&
+//           data.map((item) => (
+//             <Header
+//               key={item.username}
+//               headerText={item.username}
+//               headerIcon={"bell-o"}
+//             />
+//           ))}
+//       </View>
+
+//       <ScrollView
+//         showsVerticalScrollIndicator={false}
+//         contentContainerStyle={styles.scrollViewContent}
+//       >
+//         <Text style={styles.heading}>Our Services</Text>
+//         <View style={styles.serviceContainer}>
+//           <ServiceButton
+//             icon="whatsapp"
+//             text="Chat"
+//             backgroundColor="#008080"
+//             onPress={() => alert("Coming soon..")}
+//           />
+//           <ServiceButton
+//             icon="dollar"
+//             text="Missional Communities"
+//             backgroundColor="#FFA500"
+//             onPress={() =>
+//               navigation.navigate("missionalCommunity", { username })
+//             }
+//           />
+//         </View>
+//         <View style={styles.serviceContainer}>
+//           <ServiceButton
+//             icon="file-video-o"
+//             text="Sermons"
+//             backgroundColor="blue"
+//             onPress={() => alert("Coming soon..")}
+//           />
+//           <ServiceButton
+//             icon="registered"
+//             text="New Member"
+//             backgroundColor="lightblue"
+//             onPress={() => alert("Coming soon..")}
+//           />
+//         </View>
+//         <View style={styles.serviceContainer}>
+//           <ServiceButton
+//             icon="music"
+//             text="Worship Songs"
+//             backgroundColor="#ccffff"
+//             onPress={() => alert("Coming soon..")}
+//           />
+//           <ServiceButton
+//             icon="calendar-check-o"
+//             text="Weekly Events"
+//             backgroundColor="#b3b300"
+//             onPress={() => alert("Coming soon..")}
+//           />
+//         </View>
+//       </ScrollView>
+//     </SafeAreaView>
+//   );
+// };
+
+// const ServiceButton = ({ icon, text, backgroundColor, onPress }) => (
+//   <TouchableOpacity
+//     onPress={onPress}
+//     style={[styles.serviceButton, { backgroundColor }]}
+//   >
+//     <FontAwesome name={icon} size={32} color="white" />
+//     <Text style={styles.serviceText}>{text}</Text>
+//   </TouchableOpacity>
+// );
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "white",
+//     padding: 20,
+//   },
+//   scrollViewContent: {
+//     paddingBottom: 20,
+//   },
+//   heading: {
+//     fontSize: 32,
+//     fontWeight: "bold",
+//     marginBottom: 20,
+//   },
+//   serviceContainer: {
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     marginBottom: 20,
+//   },
+//   serviceButton: {
+//     width: width * 0.4,
+//     height: height * 0.2,
+//     borderRadius: 16,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   serviceText: {
+//     fontSize: 18,
+//     color: "white",
+//     fontWeight: "bold",
+//     marginTop: 10,
+//   },
+// });
+
+// export default MainScreen;

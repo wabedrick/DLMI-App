@@ -23,6 +23,7 @@
     "screens/missionalComunity/RegisterMC.js",
     "screens/missionalComunity/ViewPreviousReports.js",
     "screens/missionalComunity/WeeklyReports.js",
-    "screens/missionalComunity/WriteWeeklyReport.js"
+    "screens/missionalComunity/WriteWeeklyReport.js",
+    "screens/MainScreen.js"
   ]
 }

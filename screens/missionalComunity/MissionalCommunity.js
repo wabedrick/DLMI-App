@@ -9,23 +9,37 @@ import {
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchFilter from "@/components/SearchFilter";
-import MC from "@/components/MC";
 import axios from "axios";
 import { colors } from "@/constants/Constants";
 import { useNavigation } from "@react-navigation/native";
 import HeaderOne from "@/components/HeaderOne";
 
-const MissionalCommunity = () => {
+const MissionalCommunity = ({ route }) => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [missionalCommunities, setMissionalCommunities] = useState([]);
   const [filteredMC, setFilteredMC] = useState([]);
   const navigation = useNavigation();
+  const { data } = route.params;
 
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "http://divinelifeministriesinternational.org/users/userRegister.php"
+  //     );
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error("Failed to fetch data:", error);
+  //     throw error;
+  //   }
+  // };
+
+  // Fetching all the MCS
   useEffect(() => {
     axios
       .get(
-        `http://10.0.2.2:80/DLMI/missionalCommunity/registerMc.php?action=getAllMCs`
+        // `http://divinelifeministriesinternational.org/missionalCommunity/registerMC.php?action=getAllMCs`
+        `http://10.0.2.2:80/DLMI/missionalCommunity/registerMC.php?action=getAllMCs`
       )
       .then((response) => {
         if (response.data.status === "success") {
@@ -63,6 +77,14 @@ const MissionalCommunity = () => {
       </View>
     );
   }
+
+  const missionalCommunityPress = () => {
+    if (userData.missional_community.toLowerCase() == mc.mc_name) {
+      navigation.navigate("mcs", { data });
+    } else {
+      alert("You don't belong to this MC");
+    }
+  };
   return (
     <View style={{ flex: 1 }}>
       <HeaderOne iconName={"arrow-left"} />
@@ -96,7 +118,7 @@ const MissionalCommunity = () => {
                 <Pressable
                   // We are navigating to the next screen and we are passing the data to
                   // that screen that we are navigating to
-                  onPress={() => navigation.navigate("mcs", { item: item })}
+                  onPress={() => navigation.navigate("mcs", { item })}
                   style={{
                     width: 180,
                     height: 90,
@@ -122,7 +144,7 @@ const MissionalCommunity = () => {
                   </Text>
                 </Pressable>
               )}
-              keyExtractor={(item) => item.id.toString()}
+              // keyExtractor={(item) => item.id.toString()}
               numColumns={2}
               columnWrapperStyle={{
                 justifyContent: "space-between",

@@ -26,20 +26,26 @@ const Register = () => {
 
   const handleRegister = () => {
     axios
-      .post("http://10.0.2.2:80/DLMI/users/userRegister.php", {
-        action: "register",
-        username,
-        email,
-        missional_community,
-        password,
-      })
+      .post(
+        // "http://divinelifeministriesinternational.org/users/userRegister.php",
+        "http://10.0.2.2:80/DLMI/users/userRegister.php",
+        {
+          action: "register",
+          username,
+          email,
+          missional_community,
+          password,
+        }
+      )
       .then((response) => {
         const { status, message } = response.data;
         if (status === "success") {
-          Alert.alert("Success", message);
+          // Alert.alert("Success", message);
+          setMessage(message);
           navigation.navigate("Login");
         } else {
-          Alert.alert("Error", message);
+          // Alert.alert("Error", message);
+          setMessage(message);
         }
       })
       .catch((error) => {
@@ -154,6 +160,21 @@ const Register = () => {
               </TouchableOpacity>
             </View>
 
+            {/* Error Messages incase of failures in registration */}
+
+            {message ? (
+              <Text
+                style={{
+                  color: "red",
+                  fontSize: 20,
+                  paddingHorizontal: 8,
+                  marginBottom: 8,
+                }}
+              >
+                {message}
+              </Text>
+            ) : null}
+
             <TouchableOpacity
               onPress={handleRegister}
               style={{
@@ -167,9 +188,14 @@ const Register = () => {
             >
               <Text style={{ fontSize: 22, fontWeight: "600" }}>Register</Text>
             </TouchableOpacity>
-            {/* {message ? (
-              <Text style={{ color: "red", fontSize: 20 }}>{message}</Text>
-            ) : null} */}
+            <View style={{ margin: 8, flexDirection: "row" }}>
+              <Text style={{ fontSize: 22, marginEnd: 8 }}>
+                Have an account already
+              </Text>
+              <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <Text style={{ fontSize: 22, color: "green" }}>Login</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </ScrollView>
