@@ -27,8 +27,9 @@ const Register = () => {
   const handleRegister = () => {
     axios
       .post(
-        // "http://divinelifeministriesinternational.org/users/userRegister.php",
-        "http://10.0.2.2:80/DLMI/users/userRegister.php",
+        "http://divinelifeministriesinternational.org/users/userRegister.php",
+        // "http://10.0.2.2:80/DLMI/users/userRegister.php",
+        // "http://192.168.42.76:80/DLMI/users/userRegister.php",
         {
           action: "register",
           username,
@@ -59,12 +60,12 @@ const Register = () => {
           );
         } else if (error.request) {
           // Request was made but no response was received
-          console.error("Request error:", error.request);
+          // console.error("Request error:", error.request);
           Alert.alert("Error", "No response from server");
         } else {
           // Something else happened
-          console.error("Error:", error.message);
-          Alert.alert("Error", error.message);
+          // console.error("Error:", error.message);
+          // Alert.alert("Error", error.message);
         }
       });
   };

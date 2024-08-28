@@ -1,31 +1,33 @@
 
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import image from "@/assets/images/fellowship.jpeg";
 import HeaderOne from "@/components/HeaderOne";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-const McMembers = ({ route }) => {
+const ReportDetails = ({ route }) => {
   const { item } = route.params;
 
   return (
     <View style={styles.container}>
       <HeaderOne iconName={"arrow-left"} />
       <View style={styles.content}>
-        <View style={styles.imageContainer}>
+        {/* <View style={styles.imageContainer}>
           <Image style={styles.image} source={image} />
-        </View>
+        </View> */}
         <View style={styles.infoContainer}>
-          <InfoRow label="Name:" value={`${item.firstname} ${item.lastname}`} />
-          <InfoRow label="Phone Number:" value={item.phoneNumber} />
-          <InfoRow label="Email:" value={item.email} />
-          <InfoRow label="Physical Location:" value={item.physical_location} />
-          <InfoRow label="Gender:" value={item.gender} />
-          <InfoRow label="Date of Birth:" value={item.date_of_birth} />
-          <InfoRow label="Member of DLMI:" value={item.dlm_member} />
+          <InfoRow label="Meeting Date:" value={item.meetingDate} />
+          <InfoRow label="MC Name:" value={item.mcName} />
+          <InfoRow label="Total Attendence:" value={item.attendence} />
+          <InfoRow label="Total New Members:" value={item.newMember} />
+          <InfoRow label="Amount Given(In UGX):" value={item.giving} />
+          {/* <InfoRow label="Leader's Comment:" value={item.comment} /> */}
+        </View>
+        <View style={{alignItems:'center', paddingHorizontal:wp("5%"), paddingTop:hp("3%") }}>
+            <Text style={{fontSize:wp("5%"), marginBottom:wp("3%"), fontWeight:'bold'}}>The MC Leader's Comment about the Meeting</Text>
+            <Text style={{fontSize:wp("5%"), color:'blue'}}>{item.comment}</Text>
         </View>
       </View>
     </View>
@@ -48,8 +50,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: hp("15%"),
     backgroundColor: "#fff",
-    borderTopLeftRadius: wp("20%"),
-    borderTopRightRadius: wp("20%"),
+    borderTopLeftRadius: wp("5%"),
+    borderTopRightRadius: wp("5%"),
   },
   imageContainer: {
     alignItems: "center",
@@ -78,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default McMembers;
+export default ReportDetails;

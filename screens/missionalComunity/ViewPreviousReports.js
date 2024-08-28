@@ -29,8 +29,8 @@ const McMembers = ({ route }) => {
 
     axios
       .get(
-        // `http://divinelifeministriesinternational.org/missionalCommunity/weeklyReport.php?action=getReportsByMissionalCommunity&mcName=${mc_name}`
-        `http://10.0.2.2:80/DLMI/missionalCommunity/weeklyReport.php?action=getReportsByMissionalCommunity&mcName=${mc_name}`
+        `http://divinelifeministriesinternational.org/missionalCommunity/weeklyReport.php?action=getReportsByMissionalCommunity&mcName=${mc_name}`
+        // `http://192.168.42.76:80/DLMI/missionalCommunity/weeklyReport.php?action=getReportsByMissionalCommunity&mcName=${mc_name}`
       )
       .then((response) => {
         if (response.data.status === "success") {
@@ -62,7 +62,7 @@ const McMembers = ({ route }) => {
   }, [query, reports]);
 
   const renderItem = ({ item }) => (
-    <Pressable onPress={() => navigation.navigate("mcMember", { item: item })}>
+    <Pressable onPress={() => navigation.navigate("reportDetails", { item: item })}>
       <View style={styles.userCard}>
         <Text style={{ fontSize: 20, fontWeight: "700", marginEnd: 56 }}>
           {item.meetingDate}
@@ -133,6 +133,7 @@ const McMembers = ({ route }) => {
             New Mem
           </Text>
         </View>
+        {/* <Text>{mc_name}</Text> */}
         <FlatList
           data={fiteredReports}
           renderItem={renderItem}

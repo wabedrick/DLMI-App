@@ -24,7 +24,7 @@ const Register = () => {
 
   const handleRegister = () => {
     axios
-      .post("http://10.0.2.2:80/DLMI/missionalCommunity/registerMC.php", {
+      .post("http://divinelifeministriesinternational.org/missionalCommunity/registerMC.php", {
         action: "register",
         name,
         leader,

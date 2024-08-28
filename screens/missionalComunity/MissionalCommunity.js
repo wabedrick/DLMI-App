@@ -38,8 +38,8 @@ const MissionalCommunity = ({ route }) => {
   useEffect(() => {
     axios
       .get(
-        // `http://divinelifeministriesinternational.org/missionalCommunity/registerMC.php?action=getAllMCs`
-        `http://10.0.2.2:80/DLMI/missionalCommunity/registerMC.php?action=getAllMCs`
+        `http://divinelifeministriesinternational.org/missionalCommunity/registerMC.php?action=getAllMCs`
+        // `http://192.168.42.76:80/DLMI/missionalCommunity/registerMC.php?action=getAllMCs`
       )
       .then((response) => {
         if (response.data.status === "success") {

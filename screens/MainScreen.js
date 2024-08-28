@@ -30,7 +30,7 @@ const MainScreen = ({ route }) => {
   const fetchUserData = async () => {
     const response = await axios.get(
       // "http://divinelifeministriesinternational.org/users/userRegister.php",
-      "http://10.0.2.2:80/DLMI/users/userRegister.php",
+      "http://192.168.42.76:80/DLMI/users/userRegister.php",
       {
         headers: {
           Authorization: `Bearer ${route.params.token}`,
@@ -98,7 +98,7 @@ const MainScreen = ({ route }) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollViewContent}
       >
-        <Text style={styles.heading}>Our Services</Text>
+        <Text style={styles.heading}>Divine Life Ministries International</Text>
         <View style={styles.serviceContainer}>
           <ServiceButton
             icon="whatsapp"
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   heading: {
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: "bold",
     fontFamily: "serif",
     marginBottom: 10,

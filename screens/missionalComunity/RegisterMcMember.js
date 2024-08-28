@@ -31,7 +31,7 @@ const RegisterMcMember = () => {
 
   const handleRegister = () => {
     axios
-      .post("http://10.0.2.2:80/DLMI/mcMembers/registerMember.php", {
+      .post("http://divinelifeministriesinternational.org/mcMembers/registerMember.php", {
         firstname,
         lastname,
         phoneNumber,

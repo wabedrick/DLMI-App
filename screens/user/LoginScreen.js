@@ -251,8 +251,8 @@ const LoginScreen = () => {
   const handleLogin = async () => {
     try {
       const url =
-        // "http://divinelifeministriesinternational.org/users/userRegister.php";
-        "http://10.0.2.2:80/DLMI/users/userRegister.php";
+        "http://divinelifeministriesinternational.org/users/userRegister.php";
+        // "http://192.168.42.76:80/DLMI/users/userRegister.php";
 
       const response = await axios.post(url, {
         action: "login",

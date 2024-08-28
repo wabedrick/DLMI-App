@@ -26,6 +26,7 @@ import RegisterMC from "@/screens/missionalComunity/RegisterMC";
 import MissionalCommunityButtons from "@/screens/missionalComunity/MissionalCommunityButtons";
 import WriteWeeklyReport from "@/screens/missionalComunity/WriteWeeklyReport";
 import ViewPreviousReports from "@/screens/missionalComunity/ViewPreviousReports";
+import ReportDetails from "@/screens/missionalComunity/ReportDetails";
 import McChatScreen from "@/screens/missionalComunity/chatting/McChatScreen";
 
 const Stack = createNativeStackNavigator();
@@ -62,6 +63,7 @@ const AppNavigator = () => {
       />
 
       <Stack.Screen name="mcChatting" component={McChatScreen} />
+      <Stack.Screen name="reportDetails" component={ReportDetails} />
     </Stack.Navigator>
     // </NavigationContainer>
   );
